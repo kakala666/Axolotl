@@ -9,3 +9,14 @@
 - WARN 和 ERROR 日志在 30 MiB 边界内保持完整，超过边界前自动轮转且不拆分单个事件
 - 启动器日志创建超过三天后自动删除
 - 修复 Fabric/Modrinth 实例内容页手动下载状态 watcher 重复写入相同 `Map`、触发递归更新并持续加载的问题
+- 整合包文件导入现在按压缩包内容自动识别格式,不再仅限于 `.mrpack` 文件
+- 新增支持导入 CurseForge 整合包压缩包(`manifest.json`),自动通过 CurseForge API 并发下载模组,无法自动下载的文件会进入手动下载列表
+- 新增支持导入 MCBBS 整合包(`mcbbs.packmeta` 或含 `addons` 的 `manifest.json`),`files` 列表中的 CurseForge 文件会自动下载,并迁移其自定义 JVM 参数
+- 新增 OptiFine 支持:MCBBS 整合包声明的 OptiFine 会自动安装——单独存在时作为加载器(LaunchWrapper 方式启动),与 Forge/NeoForge 共存时作为模组放入 mods 目录;OptiFine 文件通过 BMCLAPI 获取
+- 新增支持导入 HMCL 整合包(`modpack.json`,含 `addons` 声明的加载器与 OptiFine)
+- 新增支持导入 MultiMC/Prism 导出的实例压缩包(`mmc-pack.json` + `instance.cfg`,含实例图标与设置迁移)
+- 新增支持"带启动器的整合包"压缩包:自动提取内部的 `modpack.zip` / `modpack.mrpack` 并继续安装
+- 新增支持导入普通 `.minecraft` 游戏目录压缩包,自动从版本 JSON 识别游戏版本与加载器(含 Forge/Fabric/Quilt/NeoForge/OptiFine)
+- 整合包文件选择器与拖拽安装现在同时接受 `.zip` 文件
+- 整合包被额外套一层文件夹打包时也能正确识别与安装(适用于 `.mrpack` 及所有新增格式)
+- 解压整合包时兼容 GB18030(GBK)编码的中文文件名,不再产生乱码
