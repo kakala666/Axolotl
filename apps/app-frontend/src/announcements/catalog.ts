@@ -33,6 +33,25 @@ export const ANNOUNCEMENT_CHANGE_TYPES: readonly AnnouncementChangeType[] = [
 
 export const launcherAnnouncements: readonly LauncherAnnouncement[] = [
 	{
+		id: 'launcher-1.5.1',
+		version: '1.5.1',
+		publishedAt: '2026-07-23',
+		title: {
+			'en-US': 'Axolotl Launcher 1.5.1',
+			'zh-CN': 'Axolotl Launcher 1.5.1',
+		},
+		changes: {
+			added: [
+				{
+					'en-US':
+						'The game language now follows the launcher language on the first launch of an instance, including imported modpacks, using the correct language code for each game version; instances you already play keep your in-game choice.',
+					'zh-CN':
+						'游戏语言现在会在实例首次启动时自动跟随启动器语言（包括导入的整合包），并按游戏版本写入正确的语言代码；已游玩过的实例仍保留游戏内的语言设置。',
+				},
+			],
+		},
+	},
+	{
 		id: 'launcher-1.5.0',
 		version: '1.5.0',
 		publishedAt: '2026-07-23',
